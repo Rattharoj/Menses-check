@@ -25,8 +25,8 @@ class Main extends Component {
             <CssBaseline />
             <AppBar position="relative">
               <Toolbar>
-                <LocalHospitalIcon  />
-                <Typography variant="h6" color="inherit" noWrap>
+                <LocalHospitalIcon fontSize="large" />
+                <Typography variant="h4" color="inherit" noWrap>
                   &nbsp;Menses Summary
                 </Typography>
               </Toolbar>
@@ -36,7 +36,9 @@ class Main extends Component {
               <div>
                 <Container maxWidth="xl">
                 <div></div>
-                <p></p>
+                <Typography opacity="0">
+                  .
+                </Typography>
                 <div>
                   <Grid container spacing={2} justify="center">
                     <TextField id="outlined-basic" label="TokenID" variant="outlined" />

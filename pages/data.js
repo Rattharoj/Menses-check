@@ -134,7 +134,7 @@ const draw = () => {
     .append('text')
     .attr('class', 'yearLabel')
     .style('font-size', '0.8em')
-    .style('fill', '#aaa')
+    .style('fill', '#000000')
     .attr('x', calX)
     .attr('y', yOffset)
     .text(function (d) {
@@ -178,7 +178,7 @@ const draw = () => {
     dayLabels
       .append('text')
       .attr('class', 'dayLabel')
-      .style('fill', '#aaa')
+      .style('fill', '#212121')
       // .style('text-anchor', 'right')
       .style('font-size', '0.6em')
       .style('font-family', 'sans-serif')
@@ -238,19 +238,19 @@ const draw = () => {
   }).append('text').text(function (d) {
     return d.date.getDate();
   })
-  .style("font", "10px times")
+  .style("font", "8px times")
   .style("font-weight", "1000")
+  .style('fill', '#000000')
   .attr('x', function (d) {
-    return calX + 1 + d.date.getDay() * 17;
+    return calX + 2 + d.date.getDay() * 17;
   })
   .attr('y', function (d) {
     return (
       yOffset +
       calY +
-      16+d3.timeWeek.count(d3.timeYear(d.date), d.date) * 17
+      15+d3.timeWeek.count(d3.timeYear(d.date), d.date) * 17
     );
-  })
-                .attr('fill', 'black');
+  });
 
   //append a title element to give basic mouseover info
   dataRects.append('title').text(function (d) {
@@ -312,7 +312,7 @@ const draw = () => {
       .append('text')
       .attr('class', 'monthLabel')
       .style('text-anchor', 'end')
-      .style('fill', '#aaa')
+      .style('fill', '#212121')
       .style('font-size', '0.6em')
       .style('font-family', 'sans-serif')
       .attr('x', calX / 1.5)
