@@ -19,7 +19,47 @@ import D3 from './data';
 
 
 class Main extends Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        daTa: {
+          "name": "Corina",
+          "birthday": 98300820710,
+          "menses": [
+            {
+              "date": 1577836800000,
+              "grade": 0
+            },
+            {
+              "date": 1589760000000,
+              "grade": 0
+            }
+          ]
+        }
+        ,
+        isExists: 0
+      }
+    }
+
+    async componentWillMount() {
+      const response = await fetch('https://signb-project.appspot.com/visualize/otp/activate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ "token": "3493" }),
+      })
+      const apidata = await response.json();
+      this.setState({ daTa: apidata, isExists: 1});
+    }
+
     render() {
+    
+    let D3Data;
+    if (this.state.isExists==0) {
+      D3Data = "";
+    } else {
+      D3Data = <D3 datA={this.state.daTa} />;
+    }
+
         return (
           <React.Fragment>
             <CssBaseline />
@@ -53,7 +93,7 @@ class Main extends Component {
                 <div></div>
                 <p></p>
                   <Typography>
-                    <D3/>
+                    {D3Data}
                   </Typography>
                 </Container>
               </div>

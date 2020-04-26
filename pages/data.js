@@ -19,9 +19,30 @@ import * as d3 from 'd3';
 import mockMensesData from '../Data/mockMensesData.json';
 
 
-const CalendarH = () => {
+const CalendarH = (props) => {
   useEffect(() => {
-    draw();
+    console.log(props.datA);
+    let D3DaTa;
+    if (props.datA=="") {
+      // เปลี่ยนเป็น null object
+      D3DaTa = {
+        "name": "Corina",
+        "birthday": 98300820710,
+        "menses": [
+          {
+            "date": 1577836800000,
+            "grade": 0
+          },
+          {
+            "date": 1589760000000,
+            "grade": 0
+          }
+        ]
+      };
+    } else {
+      D3DaTa = props.datA;
+    }
+    draw(D3DaTa);
   }, []);
   return (
     <>
@@ -81,14 +102,14 @@ const parseDate = d3.timeParse('%Q');
 const format = d3.timeFormat('%Q');
 const toolDate = d3.timeFormat('%d %b %y');
 
-const draw = () => {
+const draw = (DaTa) => {
   // d3.json("data.json").then(() => { //for json fetch
 
   let dates = new Array();
   let values = new Array();
 
   //parse the data
-  let data = mockMensesData.menses;
+  let data = DaTa.menses;
   // console.log(data);
   data.forEach(function (d) {
     dates.push(parseDate(d.date));
